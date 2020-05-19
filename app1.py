@@ -4,12 +4,19 @@ import difflib
 def printDefinition(word, data):    
     if word == None:
         getUserWord(data)
-    elif word in data:
-        word = word.lower() 
-        for definition in data[word]:
-            print(definition)
     else:
-        print('This word was not found in the database')
+        if word in data:
+            for definition in data[word]:
+                print(definition)
+        elif word.lower() in data:
+            for definition in data[word.lower()]:
+                print(definition)
+        else:
+            print('This word was not found in the database')
+
+       
+    
+        
 
 def checkIfValidWord(word, data):
     if word in data:
